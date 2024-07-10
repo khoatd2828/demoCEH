@@ -13,3 +13,15 @@ export const loginThunk = createAsyncThunk(
         }
     }
 )
+
+export const registerThunk = createAsyncThunk (
+    'quanLyNguoiDung/login',
+    async (payload, {rejectWithValue}) => {
+        try {
+            return await qlNguoiDungServices.dangKy(payload)
+        }
+        catch (err) {
+            return rejectWithValue(err)
+        }
+    }
+)

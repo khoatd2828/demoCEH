@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button, Input } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -18,15 +18,20 @@ export const Login = () => {
 
   const onSubmit = async (values) => {
     try {
-      await dispatch(loginThunk(values));
-      navigate("/");
-      toast.success("Đăng nhập thành công!"); 
+      const resultAction = await dispatch(loginThunk(values));
+      if (loginThunk.fulfilled.match(resultAction)) {
+        toast.success("Đăng nhập thành công!");
+        setTimeout(() => {
+          navigate("/")
+        }, 2000);
+      }
     } catch (error) {
       toast.error("Đăng nhập thất bại. Vui lòng thử lại!");
-    }
+    } 
   };
+  
   return (
-    <div className="login-container mt-200">
+    <div className="login-container">
       <div className="p-6">
         <h1
           style={{ fontSize: "24px", fontWeight: "bold" }}
@@ -80,17 +85,22 @@ export const Login = () => {
           </div>
 
           <div className="button mb-2">
-            <Button type="primary" htmlType="submit" className="login-button">
+            <button type="primary" htmlType="submit" className="login-button">
               Đăng nhập
-            </Button>
+            </button>
           </div>
 
           <div className="text-center">
             Bạn chưa có tài khoản?{" "}
             <Button
-              type="primary"
-              className="ms-3 mt-2"
-              onClick={() => console.log("Đăng ký")}
+              className="ms-3 mt-2 bg-black text-white"
+              style={{
+                transition: 'background-color 0.3s ease',
+                '&:hover': {
+                  backgroundColor: '#555',
+                }
+              }}
+              onClick={() => navigate('/register')}
             >
               Đăng ký
             </Button>
