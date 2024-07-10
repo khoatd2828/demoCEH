@@ -28,6 +28,7 @@ export const SideMenu = () => {
 
   return (
     <div className="menu-container">
+      <img src="https://cehsoft.com/wp-content/themes/cehsoft/images/logo-1.png" alt=" " />
       <Menu
         className='menu-container'
         onClick={onClick}

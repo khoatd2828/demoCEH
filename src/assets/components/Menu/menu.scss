@@ -1,4 +1,5 @@
 .menu-container {
+  position: relative;
   background-color: #a4cff7;
   .ant-menu-horizontal {
     border-bottom: none;
@@ -19,4 +20,14 @@
       }
     }
   }
+  img {
+    position: absolute; /* Đặt hình ảnh ở vị trí tuyệt đối bên trong menu-container */
+    top: 20%;
+    left: 14%;
+    width: 120px; /* Độ rộng mong muốn của hình ảnh */
+    height: auto; /* Chiều cao tự điều chỉnh theo tỷ lệ */
+  }
 }
+
+
+

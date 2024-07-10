@@ -5,12 +5,12 @@ import { SideMenu } from '../Menu/SideMenu'
 export const MainLayout = () => {
   return (
     <div>
-        <div>
-          <SideMenu/>
-        </div>
-        <div>
-           <Outlet/>
-        </div>
+      <div className="side-menu">
+        <SideMenu />
+      </div>
+      <div>
+        <Outlet />
+      </div>
     </div>
 )
 }
